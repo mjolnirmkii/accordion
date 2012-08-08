@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="workflow"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="workflow"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+    <xsd:simpleType name="workflowType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="basic"/>
+            <xsd:enumeration value="enhanced"/>
+            <xsd:enumeration value="dispatch"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:element name="workflow">
+        <xsd:complexType>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element ref="group"/>
+                <xsd:element ref="timer"/>
+            </xsd:choice>
+            <xsd:attribute name="name" type="xsd:string" use="required"/>
+            <xsd:attribute name="id" use="required" type="xsd:ID"/>
+            <!-- If the workflow type is set to enhanced the aciton ids need to be prefixed
+            with the dataflow name ex: NODE2.en.query-->
+            <xsd:attribute name="type" type="workflowType"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="group">
+        <xsd:complexType>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element ref="action"/>
+                <xsd:element ref="generic-action"/>
+            </xsd:choice>
+            <xsd:attribute name="name" use="required" type="xsd:string"/>
+            <xsd:attribute name="errorHandler" type="xsd:string"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="timer">
+        <xsd:complexType>
+            <xsd:attribute name="id" use="required" type="xsd:ID"/>
+            <xsd:attribute name="actionId" use="required" type="xsd:string"/>
+            <xsd:attribute name="interval" use="required" type="xsd:integer"/>
+            <xsd:attribute name="start-delay" use="required" type="xsd:integer"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="action">
+        <xsd:complexType>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element ref="forward"/>
+                <xsd:element ref="parameter"/>
+            </xsd:choice>
+            <xsd:attribute name="id" use="required" type="xsd:ID"/>
+            <xsd:attribute name="name" use="required" type="xsd:string"/>
+            <xsd:attribute name="class" use="required" type="xsd:string"/>
+            <xsd:attribute name="description" use="required" type="xsd:string"/>
+            <xsd:attribute name="errorHandler" type="xsd:string"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="generic-action">
+        <xsd:complexType>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element ref="forward"/>
+                <xsd:element ref="parameter"/>
+            </xsd:choice>
+            <xsd:attribute name="id" use="required" type="xsd:ID"/>
+            <xsd:attribute name="type" use="required" type="xsd:string"/>
+            <xsd:attribute name="name" type="xsd:string"/>
+            <xsd:attribute name="description" type="xsd:string"/>
+            <xsd:attribute name="errorHandler" type="xsd:string"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="forward">
+        <xsd:complexType>
+            <xsd:attribute name="name" use="required" type="xsd:string"/>
+            <xsd:attribute name="actionId" use="required" type="xsd:string"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="parameter">
+        <xsd:complexType>
+            <xsd:attribute name="name" use="required" type="xsd:string"/>
+            <xsd:attribute name="value" use="required" type="xsd:string"/>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

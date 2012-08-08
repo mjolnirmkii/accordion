@@ -1,0 +1,126 @@
+/***************************************************/
+/* Accordion-specific style rules.             	   */
+/***************************************************/
+
+.accordion h4 {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.accordion_left {
+	margin-right: 120px;
+}
+
+.accordion_right {
+	float: right;
+}
+
+.accordions .accordion .accordion_editLink {
+	display: inline-block;
+	vertical-align: top;
+	width: 50px;
+	text-align: right;
+}
+
+.accordions .accordion .accordion_editLink:hover {
+	text-decoration: underline;
+}
+
+.accordions .accordion .accordion_deleteLink {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.accordions .ui-accordion .ui-accordion-header a {
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.accordion_expandCollapse {
+	text-align: right;
+}
+
+.accordion .headerText {
+	height: 1.17em; /* 1.3 line height * .9em font size */
+}
+
+.accordion .headerText a { /* Apply pretty overflow by default */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.accordion #space, .accordion_single #space { /* TODO: fix normal space rule, so i won't have to do this */
+	width:100%;
+	left: 0;
+}
+
+.accordion_answer {
+	font-weight: bold;
+}
+
+.accordion_header {
+	overflow: hidden;
+}
+
+.accordion_content table, .accordion_header table {
+	font-size: 14px;
+}
+
+.ui-accordion .accordion_content .ui-button, .ui-accordion .accordion_content input, .ui-accordion .accordion_content select, .ui-accordion .accordion_content textarea {
+	font-size: 14px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.ui-accordion .accordion_content .ui-button {
+	font-weight: bold;
+}
+
+.ui-accordion-header.ui-state-default, .accordion .ui-accordion-header.ui-state-active {
+	background: none;
+}
+
+.ui-accordion-header.ui-state-hover {
+	background: url("../images/ui-bg_glass_75_dadada_1x400.png") repeat-x scroll 50% 50% #DADADA;
+}
+
+#accordion_file body {
+	background: none;
+}
+
+#accordion_file input[type="submit"] {
+	display: none;
+}
+
+.accordion_fileIframe { /* TODO: fix for IE? */
+	width: 222px;
+	height: 24px;
+	vertical-align: middle;
+	overflow: hidden;
+}
+
+#accordion_file form {
+	margin: 0;
+}
+
+.noOverflow {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.smallText {
+    font-family: verdana,arial,helvetica,sans-serif;
+    font-size: x-small;
+}
+
+#accordion_file .fileName {
+	font-weight: bold;
+}
+
+div.compositionTotal{
+	border: 1px solid;
+    float: right;
+    font-weight: bold;
+    padding: 5px;
+}
